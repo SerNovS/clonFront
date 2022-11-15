@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Productos</h3>
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" routerLink="/producto/form" class="btn btn-block btn-outline-primary">Crear Producto</button>
+        </div>
+
+        <div class="col-md-12" *ngIf="productos.length==0">
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">No hay registros de productos</h3>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Stock</th>
+              <th>Precio Compra</th>
+              <th>Precio Venta</th>
+              <th>Unidad de Medida</th>
+              <th>Visibilidad</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of productos">
+              <td>{{item.id}}</td>
+              <td>{{item.imagen}}</td>
+              <td>{{item.nombreProducto}}</td>
+              <td>{{item.stock}}</td>
+              <td>{{item.ultimoPrecioCompra}}</td>
+              <td>{{item.ultimoPrecioVenta}}</td>
+              <td>{{item.unidadMedida}}</td>
+              <td>{{item.visibilidad}}</td>
+              <td><button type="button" [routerLink]="['/producto/form',item.id]" class="btn btn-block btn-outline-primary">Editar</button></td>
+              <td><button type="button" (click)="delete(item)" class="btn btn-block btn-outline-danger">Eliminar</button></td>
+            </tr>
+            </tbody>
+
+          </table>
+          <paginator-producto *ngIf="paginador" [paginador] = "paginador"></paginator-producto>
+
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+</div>

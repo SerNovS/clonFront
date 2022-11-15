@@ -1,0 +1,35 @@
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="card-title">{{titulo}}</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="nombreProducto">Nombre Producto</label>
+                    <input type="text" class="form-control" [(ngModel)]="producto.nombreProducto" name="nombreProducto">
+                  </div>
+                  <div class="form-group">
+                    <label for="unidadMedida">Unidad de Medida</label>
+                    <input type="text" class="form-control" [(ngModel)]="producto.unidadMedida" name="unidadMedida">
+                  </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->

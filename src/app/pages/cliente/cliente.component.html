@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Clientes</h3>
+        </div>
+
+
+        <div class="col-md-12">
+          <button type="button" routerLink="/cliente/form" class="btn btn-block btn-outline-primary">Agregar
+            Cliente</button>
+        </div>
+
+        <div class="col-md-12" *ngIf="clientes.length==0">
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">No hay registros de clientes</h3>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover" *ngIf="clientes.length>0">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Direccion</th>
+                <th>Nombre Empresa</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of clientes">
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.apellido}}</td>
+                <td>{{item.telefono}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.nombreEmpresa}}</td>
+                <td><button type="button" [routerLink]="['/cliente/form',item.id]" class="btn btn-block btn-outline-primary">Editar</button></td>
+                <td><button type="button" (click)="delete(item)" class="btn btn-block btn-outline-danger">Eliminar</button></td>
+              </tr>
+            </tbody>
+
+          </table>
+          <paginator-cliente *ngIf="paginador" [paginador] = "paginador"></paginator-cliente>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+</div>

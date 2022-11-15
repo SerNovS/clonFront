@@ -1,0 +1,79 @@
+<div class="container-fluid">
+
+  <div class="card card-danger" *ngIf="errores.length > 0">
+    <div class="card-header">
+      <h3 class="card-title">Error</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <ul>
+        <li *ngFor="let err of errores">
+          {{err}}
+        </li>
+      </ul>
+    </div>
+    <!-- /.card-body -->
+  </div>
+
+
+
+
+
+  <div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">{{titulo}}</h3>
+    </div>
+    <!-- form start -->
+    <form>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" placeholder="Alberto" [(ngModel)]="cliente.nombre" name="nombre"
+             #nombre="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" class="form-control" placeholder="Hurtado" [(ngModel)]="cliente.apellido" name="apellido"
+            >
+        </div>
+        <div class="form-group">
+          <label for="telefono">Telefono</label>
+          <input type="text" class="form-control" placeholder="+56986354289" [(ngModel)]="cliente.telefono"
+            name="telefono" >
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" placeholder="alberto.hurtado@gmail.com" [(ngModel)]="cliente.email"
+            name="email" >
+        </div>
+        <div class="form-group">
+          <label for="direccion">Direccion</label>
+          <input type="text" class="form-control" placeholder="Av. Argentina #129" [(ngModel)]="cliente.direccion"
+            name="direccion" >
+        </div>
+        <div class="form-group">
+          <label for="nombreEmpresa">NombreEmpresa</label>
+          <input disbled type="text" class="form-control" placeholder="Feria Movil " [(ngModel)]="cliente.nombreEmpresa"
+            name="nombreEmpresa">
+        </div>
+      </div>
+      <!-- /.card-body -->
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary" (click)="crearCliente()"
+          *ngIf="!cliente.id else elseBlock">Crear</button>
+        <ng-template #elseBlock>
+          <button type="submit" class="btn btn-primary" (click)="update()">Editar</button>
+        </ng-template>
+      </div>
+    </form>
+  </div>
+
+</div>
