@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductoComponent } from './pages/productos/producto/producto.component';
@@ -22,12 +21,16 @@ import { PaginatorClienteComponent } from './pages/cliente/paginator-cliente/pag
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { PaginatorProductoComponent } from './pages/productos/producto/paginator-producto/paginator-producto.component';
+import { HomeComponent } from './pages/home/home.component';
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { RegistroComponent } from './pages/registro/registro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     SidebarComponent,
+    HeaderComponent,
     FooterComponent,
     DashboardComponent,
     ProductoComponent,
@@ -41,15 +44,17 @@ import { PaginatorProductoComponent } from './pages/productos/producto/paginator
     PaginatorClienteComponent,
     LoginComponent,
     PaginatorProductoComponent,
+    HomeComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [TipoService],
-  bootstrap: [AppComponent]
+  providers: [TipoService, interceptorProvider],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

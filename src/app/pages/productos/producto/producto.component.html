@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
@@ -6,7 +7,7 @@
           <h3 class="card-title">Productos</h3>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="isAdmin">
           <button type="button" routerLink="/producto/form" class="btn btn-block btn-outline-primary">Crear Producto</button>
         </div>
 
@@ -30,13 +31,13 @@
               <th>#</th>
               <th>Imagen</th>
               <th>Nombre</th>
-              <th>Stock</th>
-              <th>Precio Compra</th>
+              <th *ngIf="isAdmin">Stock</th>
+              <th *ngIf="isAdmin">Precio Compra</th>
               <th>Precio Venta</th>
               <th>Unidad de Medida</th>
-              <th>Visibilidad</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
+              <th *ngIf="isAdmin">Visibilidad</th>
+              <th *ngIf="isAdmin">Editar</th>
+              <th *ngIf="isAdmin"> Eliminar</th>
             </tr>
             </thead>
             <tbody>
@@ -44,13 +45,13 @@
               <td>{{item.id}}</td>
               <td>{{item.imagen}}</td>
               <td>{{item.nombreProducto}}</td>
-              <td>{{item.stock}}</td>
-              <td>{{item.ultimoPrecioCompra}}</td>
+              <td *ngIf="isAdmin">{{item.stock}}</td>
+              <td *ngIf="isAdmin">{{item.ultimoPrecioCompra}}</td>
               <td>{{item.ultimoPrecioVenta}}</td>
               <td>{{item.unidadMedida}}</td>
-              <td>{{item.visibilidad}}</td>
-              <td><button type="button" [routerLink]="['/producto/form',item.id]" class="btn btn-block btn-outline-primary">Editar</button></td>
-              <td><button type="button" (click)="delete(item)" class="btn btn-block btn-outline-danger">Eliminar</button></td>
+              <td *ngIf="isAdmin">{{item.visibilidad}}</td>
+              <td *ngIf="isAdmin"><button type="button" [routerLink]="['/producto/form',item.id]" class="btn btn-block btn-outline-primary">Editar</button></td>
+              <td *ngIf="isAdmin"><button type="button" (click)="delete(item)" class="btn btn-block btn-outline-danger">Eliminar</button></td>
             </tr>
             </tbody>
 

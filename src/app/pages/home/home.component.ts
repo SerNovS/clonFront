@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from 'src/app/pages/login/token.service';
+import { TokenService } from '../login/token.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html'
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+
 })
-export class HeaderComponent implements OnInit {
+export class HomeComponent implements OnInit {
+
 
   isLogged = false;
+  nombreUsuario = '';
 
   constructor(private tokenService: TokenService) { }
 
   ngOnInit() {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
+      this.nombreUsuario = this.tokenService.getUserName();
     } else {
       this.isLogged = false;
+      this.nombreUsuario = '';
     }
   }
 
-  onLogOut(): void {
-    this.tokenService.logOut();
-    window.location.reload();
-  }
 }

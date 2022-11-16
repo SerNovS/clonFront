@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
 import Swal from 'sweetalert2';
+import { TokenService } from '../../login/token.service';
 import { Producto } from './producto';
 import { ProductoService } from './producto.service';
 
@@ -14,11 +15,25 @@ export class ProductoComponent implements OnInit {
   paginador: any;
 
   filterPost = '';
+
+  roles: string[];
+  isAdmin = false;
+
   constructor(
     private productoService: ProductoService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private tokenService:TokenService
   ) {}
   ngOnInit(): void {
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach((rol) => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+      if (rol === 'ROLE_TRABAJADOR') {
+        this.isAdmin = true;
+      }
+    });
     this.activatedRoute.paramMap.subscribe((params) => {
       let page: number = +params.get('page');
 
