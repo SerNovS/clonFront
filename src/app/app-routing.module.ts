@@ -20,10 +20,13 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
-  { path: 'sendemail', component: SendEmailComponent },
   {
-    path: 'changepassword/:tokenPassword',
-    component: CambiarPasswordComponent,
+    path: 'sendemail',
+    component: SendEmailComponent
+  },
+  {
+    path: 'change-password/:tokenPassword',
+    component: CambiarPasswordComponent
   },
   {
     path: 'producto/page/:page',
