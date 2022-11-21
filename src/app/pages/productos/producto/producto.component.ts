@@ -14,13 +14,15 @@ export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
   paginador: any;
 
-  filterPost = '';
+  filters = {
+    keyword: '',
+  };
   isAdmin = false;
 
   constructor(
     private productoService: ProductoService,
     private activatedRoute: ActivatedRoute,
-    private tokenService:TokenService
+    private tokenService: TokenService
   ) {}
   ngOnInit(): void {
     this.isAdmin = this.tokenService.isAdmin();
@@ -66,6 +68,20 @@ export class ProductoComponent implements OnInit {
           );
         });
       }
+    });
+  }
+
+  listarProductos() {
+    this.productoService
+      .getProductoSinPagina()
+      .subscribe((data) => (this.productos = this.productoFiltro(data)));
+  }
+
+  productoFiltro(producto: Producto[]) {
+    return producto.filter((e) => {
+      return e.nombreProducto
+        .toLowerCase()
+        .includes(this.filters.keyword.toLowerCase());
     });
   }
 }

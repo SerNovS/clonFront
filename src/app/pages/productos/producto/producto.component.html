@@ -11,6 +11,15 @@
           <button type="button" routerLink="/producto/form" class="btn btn-block btn-outline-primary">Crear Producto</button>
         </div>
 
+        <div class="col-md-12">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="filters.keyword" name="keyword" (input)="listarProductos()" >
+            <div class="input-group-append">
+            </div>
+          </div>
+        </div>
+
+
         <div class="col-md-12" *ngIf="productos.length==0">
           <div class="card card-danger">
             <div class="card-header">

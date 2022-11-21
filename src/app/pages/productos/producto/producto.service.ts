@@ -22,6 +22,10 @@ export class ProductoService {
     return false;
   }
 
+  getProductoSinPagina():Observable<any>{
+    return this.http.get(this.urlEndPoint);
+  }
+
   getProducto(page: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
       tap((response: any) => {
