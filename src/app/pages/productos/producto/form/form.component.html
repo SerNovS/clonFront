@@ -31,24 +31,53 @@
     <form>
       <div class="card-body">
         <div class="form-group">
-          <label for="nombre">Imagen</label>
-          <input type="text" class="form-control" [(ngModel)]="producto.imagen" name="imagen"
-            #nombre="ngModel">
+          <label for="imagen">Imagen</label>
+          <input type="text" class="form-control" [(ngModel)]="producto.imagen" name="imagen" #nombre="ngModel">
         </div>
         <div class="form-group">
-          <label for="nombre">Nombre</label>
+          <label for="nombreProducto">Nombre</label>
           <input type="text" class="form-control" placeholder="Pera Asiatica" [(ngModel)]="producto.nombreProducto"
             name="nombreProducto" #nombre="ngModel">
         </div>
         <div class="form-group">
           <label for="nombre">Stock</label>
-          <input type="number" class="form-control" placeholder="120" [(ngModel)]="producto.stock"
-            name="nombreProducto" #nombre="ngModel">
+          <input type="number" class="form-control" placeholder="120" [(ngModel)]="producto.stock" name="stock"
+            #nombre="ngModel">
         </div>
         <div class="form-group">
-          <label for="nombre">Stock</label>
-          <input type="number" class="form-control" placeholder="120" [(ngModel)]="producto.stock"
-            name="nombreProducto" #nombre="ngModel">
+          <label for="unidadMedida">unidadMedida</label>
+          <input type="number" class="form-control" placeholder="Unidad" [(ngModel)]="producto.unidadMedida"
+            name="unidadMedida" #nombre="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="ultimoPrecioCompra">ultimoPrecioCompra</label>
+          <input type="number" class="form-control" placeholder="2000" [(ngModel)]="producto.ultimoPrecioCompra"
+            name="ultimoPrecioCompra" #nombre="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="ultimoPrecioVenta">ultimoPrecioVenta</label>
+          <input type="number" class="form-control" placeholder="2500" [(ngModel)]="producto.ultimoPrecioVenta"
+            name="ultimoPrecioVenta" #nombre="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="visibilidad">visibilidad</label>
+          <input type="number" class="form-control" [(ngModel)]="producto.visibilidad"
+            name="visibilidad" #nombre="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="tipoProducto">tipoProducto</label>
+          <select [compareWith]="compararTipo" type="text" class="form-control" placeholder="habilitado" [(ngModel)]="producto.tipoProducto"
+            name="tipoProducto" #nombre="ngModel">
+            <option *ngFor="let tipo of tiposProducto" [ngValue]="tipo">{{tipo.nombreTipo}}</option>
+          </select>
+        </div>
+
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary" (click)="crearProducto()"
+            *ngIf="!producto.id else elseBlock">Crear</button>
+          <ng-template #elseBlock>
+            <button type="submit" class="btn btn-primary" (click)="update()">Editar</button>
+          </ng-template>
         </div>
       </div>
 

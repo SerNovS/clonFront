@@ -3,6 +3,7 @@ import { Producto } from '../producto';
 import { ProductoService } from '../producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { TipoProducto } from '../../tipo/tipo-producto';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +13,7 @@ export class FormComponent implements OnInit {
   public titulo: string = 'Nuevo Producto';
 
   public producto: Producto = new Producto();
+  tiposProducto:TipoProducto[];
 
   public errores: string[] = [];
 
@@ -23,6 +25,13 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarProducto();
+    this.cargarTipos();
+  }
+
+  cargarTipos(): void {
+    this.productoService.getTipoProducto().subscribe(tipos =>{
+      this.tiposProducto = tipos;
+    })
   }
 
   crearProducto(): void {
@@ -58,7 +67,7 @@ export class FormComponent implements OnInit {
   update(): void {
     this.productoService.update(this.producto).subscribe(
       (producto) => {
-        this.router.navigate(['producto']);
+        this.router.navigate(['productos']);
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -72,5 +81,9 @@ export class FormComponent implements OnInit {
         console.log(err.error.errors);
       }
     );
+  }
+
+  compararTipo(o1:TipoProducto,o2:TipoProducto){
+    return o1===null || o2===null? false: o1.idTipoProducto === o2.idTipoProducto;
   }
 }
