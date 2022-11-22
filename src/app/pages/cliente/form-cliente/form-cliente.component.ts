@@ -11,8 +11,6 @@ import Swal from 'sweetalert2';
 export class FormClienteComponent implements OnInit {
   titulo: string = 'Nuevo Cliente';
 
-  click: boolean = false;
-
   cliente: Cliente = new Cliente();
 
   public errores: string[] = [];
@@ -25,14 +23,6 @@ export class FormClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarCliente();
-  }
-
-  cambiarClick() {
-    if (this.click == true) {
-      this.click = false;
-    } else {
-      this.click = true;
-    }
   }
 
   update(): void {

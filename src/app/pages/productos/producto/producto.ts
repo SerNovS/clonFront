@@ -1,3 +1,5 @@
+import { TipoProducto } from "../tipo/tipo-producto";
+
 export class Producto {
 
   id:number = 0;
@@ -8,4 +10,5 @@ export class Producto {
   ultimoPrecioCompra:number = 0;
   ultimoPrecioVenta:number = 0;
   visibilidad: boolean = true;
+  tipoProducto: TipoProducto;
 }

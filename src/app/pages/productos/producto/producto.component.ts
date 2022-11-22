@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
 import Swal from 'sweetalert2';
 import { TokenService } from '../../login/token.service';
+import { TipoProducto } from '../tipo/tipo-producto';
 import { Producto } from './producto';
 import { ProductoService } from './producto.service';
 
@@ -12,6 +13,7 @@ import { ProductoService } from './producto.service';
 })
 export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
+  tipoProducto: TipoProducto[];
   paginador: any;
 
   filters = {
@@ -44,6 +46,10 @@ export class ProductoComponent implements OnInit {
           this.productos = response.content as Producto[];
           this.paginador = response;
         });
+    });
+
+    this.productoService.getTipoProducto().subscribe((tipos) => {
+      this.tipoProducto = tipos;
     });
   }
 
