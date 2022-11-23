@@ -5,6 +5,7 @@ import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { TipoProducto } from '../tipo/tipo-producto';
 import { Producto } from './producto';
+import { UnidadMedida } from './unidadMedida';
 
 @Injectable({
   providedIn: 'root',
@@ -129,6 +130,9 @@ export class ProductoService {
   }
 
   getTipoProducto(): Observable<TipoProducto[]> {
-    return this.http.get<TipoProducto[]>(this.urlEndPoint + '/regiones');
+    return this.http.get<TipoProducto[]>(this.urlEndPoint + '/tipo');
+  }
+  getUnidadMedida(): Observable<UnidadMedida[]> {
+    return this.http.get<UnidadMedida[]>(this.urlEndPoint + '/unidad');
   }
 }

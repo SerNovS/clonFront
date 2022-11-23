@@ -4,6 +4,7 @@ import { ProductoService } from '../producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TipoProducto } from '../../tipo/tipo-producto';
+import { UnidadMedida } from '../unidadMedida';
 
 @Component({
   selector: 'app-form',
@@ -14,6 +15,7 @@ export class FormComponent implements OnInit {
 
   public producto: Producto = new Producto();
   tiposProducto:TipoProducto[];
+  unidadesMedida:UnidadMedida[];
 
   public errores: string[] = [];
 
@@ -26,6 +28,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.cargarProducto();
     this.cargarTipos();
+    this.cargarUnidades();
   }
 
   cargarTipos(): void {
@@ -33,10 +36,15 @@ export class FormComponent implements OnInit {
       this.tiposProducto = tipos;
     })
   }
+  cargarUnidades(): void {
+    this.productoService.getUnidadMedida().subscribe(unidades =>{
+      this.unidadesMedida = unidades;
+    })
+  }
 
   crearProducto(): void {
     this.productoService.create(this.producto).subscribe(
-      (cliente) => {
+      (producto) => {
         this.router.navigate(['/producto']);
         Swal.fire({
           position: 'center',
@@ -84,6 +92,16 @@ export class FormComponent implements OnInit {
   }
 
   compararTipo(o1:TipoProducto,o2:TipoProducto){
-    return o1===null || o2===null? false: o1.idTipoProducto === o2.idTipoProducto;
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1===null || o2===null || o1===undefined || o2===undefined ? false: o1.idTipoProducto === o2.idTipoProducto;
+  }
+
+  compararUnidad(o1:UnidadMedida,o2:UnidadMedida){
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1===null || o2===null || o1===undefined || o2===undefined ? false: o1.idUnidadMedida === o2.idUnidadMedida;
   }
 }
