@@ -10,6 +10,6 @@ export class Producto {
   ultimoPrecioCompra:number = 0;
   ultimoPrecioVenta:number = 0;
   visibilidad: boolean = true;
-  unidadMedida : UnidadMedida;
+   unidadMedida : UnidadMedida;
   tipoProducto: TipoProducto;
 }

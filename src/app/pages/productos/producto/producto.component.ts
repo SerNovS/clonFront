@@ -15,7 +15,7 @@ export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
   tipoProducto: TipoProducto[];
   paginador: any;
-
+  mostado:boolean;
   filters = {
     keyword: '',
   };
@@ -70,6 +70,53 @@ export class ProductoComponent implements OnInit {
           Swal.fire(
             '¡Eliminado!',
             `Se ha eliminado el cliente ${producto.nombreProducto}`,
+            'success'
+          );
+        });
+      }
+    });
+  }
+
+  activar(producto: Producto): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `Se activará el producto ${producto.nombreProducto}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Activar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productoService.update(producto).subscribe((response) => {
+          producto.visibilidad =true;
+          Swal.fire(
+            'Activado!',
+            `Se ha activado el producto ${producto.nombreProducto}`,
+            'success'
+          );
+        });
+      }
+    });
+  }
+  desactivar(producto: Producto): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `Se desactivara el producto ${producto.nombreProducto}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Activar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productoService.update(producto).subscribe((response) => {
+          producto.visibilidad = false;
+          Swal.fire(
+            'Desactivado!',
+            `Se ha desactivara el producto ${producto.nombreProducto}`,
             'success'
           );
         });
