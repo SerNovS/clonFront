@@ -45,7 +45,7 @@ export class FormComponent implements OnInit {
   crearProducto(): void {
     this.productoService.create(this.producto).subscribe(
       (producto) => {
-        this.router.navigate(['/producto']);
+        this.router.navigate(['/productos']);
         Swal.fire({
           position: 'center',
           icon: 'success',
