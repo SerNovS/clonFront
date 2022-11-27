@@ -1,24 +1,6 @@
 <app-header></app-header>
 <p>venta works!</p>
 <p>venta works!</p>
-<!-- <div class="row">
-    <div class="col-6">
-        <div ngbDropdown class="d.inline.block">
-          <button ngb clas="btn btn-success" ngbDropdownToggle id="mdw1">Productos</button>
-        <div ngbDropdownMenu *ngFor="let producto of productos">
-          <button class="dropdown-item">producto.nombre</button>
-        </div>
-        </div>
-        
-    </div>
-</div> -->
-<!-- <div class="row">
-  <div class="col-6">
-<select name="selectedQuantity" id="aantal" class="form-control" (change)="guarda($event())" >
-  <option *ngFor="let producto of productos" [value]='producto' >{{producto.nombreProducto}}</option>
-</select>
-</div>
-</div> -->
 <div class="col-9">
   <div class="example-full-width">
     <select (change)="guarda()" matNativeControl required name="managementId" 
