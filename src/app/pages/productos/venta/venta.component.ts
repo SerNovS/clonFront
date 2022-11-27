@@ -9,12 +9,23 @@ import { ProductoService } from '../producto/producto.service';
   styleUrls: ['./venta.component.css']
 })
 export class VentaComponent implements OnInit {
-  productos: Producto[];
+  productos: Producto[]=[];
+  productoElegido: Producto=new Producto();
   constructor(private productoService: ProductoService) { }
+
 
   ngOnInit(): void {
     this.productoService.dameProducto().subscribe(data => {
       this.productos=data;
     });
+    
   }
+
+  guarda(){
+    console.log(this.productoElegido);
+    console.log("Id del dropdown: "+this.productoElegido.id +" nombre: "+this.productoElegido.nombreProducto);
+
+    
+  }
+
 }

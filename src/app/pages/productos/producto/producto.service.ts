@@ -132,7 +132,7 @@ export class ProductoService {
     return this.http.get<TipoProducto[]>(this.urlEndPoint + '/regiones');
   }
 
-  getAllProducto(): Observable<Producto[]>{
-    return this.http.get<Producto[]>(this.urlEndPoint + `/producto`); 
+  dameProducto(): Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.urlEndPoint); 
   }
 }
