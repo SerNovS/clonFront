@@ -1,2 +1,12 @@
 <app-header></app-header>
 <p>venta works!</p>
+<p>venta works!</p>
+<div class="row">
+    <div class="col-6">
+        <div ngbDropdownMenu class="d.inline.block"></div>
+        <button ngb clas="btn btn-success" ngb ngbDropdownToggle id="mdw1">Productos</button>
+        <div dropdown-menu *ngFor="let producto of productos">
+          <button class="dropdown-item">producto.nombre</button>
+        </div>
+    </div>
+</div>
