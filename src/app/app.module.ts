@@ -28,6 +28,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { SendEmailComponent } from './pages/login/change-password/send-email/send-email.component';
 import { CambiarPasswordComponent } from './pages/login/change-password/cambiar-password/cambiar-password.component';
 import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-foto.component';
+import { SearchTipoComponent } from './pages/search-tipo/search-tipo.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-
     SendEmailComponent,
     CambiarPasswordComponent,
     SubirFotoComponent,
+    SearchTipoComponent,
   ],
   imports: [
     BrowserModule,
