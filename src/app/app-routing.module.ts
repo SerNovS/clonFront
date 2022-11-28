@@ -15,6 +15,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { SendEmailComponent } from './pages/login/change-password/send-email/send-email.component';
 import { CambiarPasswordComponent } from './pages/login/change-password/cambiar-password/cambiar-password.component';
 import { LoginGuard } from './guards/login.guard';
+import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-foto.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -47,7 +48,9 @@ const routes: Routes = [
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'tipoproducto', component: TipoComponent, canActivate: [ProdGuardService],
+    path: 'tipoproducto',
+    component: TipoComponent,
+    canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
