@@ -58,8 +58,8 @@
                 <td>{{item.ultimoPrecioVenta}}</td>
                 <td>{{item.unidadMedida.nombre}}</td>
                 <td>{{item.tipoProducto.nombreTipo}}</td>
-                <td *ngIf="isAdmin && item.visibilidad === false "><button type="button" (click)="activar(item)" class="btn btn-block btn-outline-danger">{{item.visibilidad}}</button></td>
-                <td *ngIf="isAdmin && item.visibilidad === true "><button type="button" (click)="desactivar(item)" class="btn btn-block btn-outline-success">{{item.visibilidad}}</button></td>
+                <td *ngIf="isAdmin && item.visibilidad === false "><button type="button" (click)="activar(item)" class="btn btn-block btn-outline-danger">Desactivado</button></td>
+                <td *ngIf="isAdmin && item.visibilidad === true "><button type="button" (click)="desactivar(item)" class="btn btn-block btn-outline-success">Activado</button></td>
                 <td *ngIf="isAdmin"><button type="button" [routerLink]="['/producto/form',item.id]"
                     class="btn btn-block btn-outline-primary">Editar</button></td>
                 <td *ngIf="isAdmin"><button type="button" (click)="delete(item)"
