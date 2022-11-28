@@ -36,7 +36,7 @@
             <td> {{ compra.id }} </td>
             <td> {{ compra.precio }} </td>
             <td> {{ compra.cantidad }} </td>
-            <td> {{ compra.fechaCompra }} </td>
+            <td> {{ compra.fechaCompra | date:'short' }} </td>
             <td> {{ compra.producto.nombreProducto }} </td>
             <!-- <td>
                 <button (click) = "modificar(usuario.id)" class = "btn btn-info"> Modificar</button>
