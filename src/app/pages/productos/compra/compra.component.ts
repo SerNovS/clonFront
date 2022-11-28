@@ -3,6 +3,7 @@ import { Producto } from '../producto/producto';
 import { ProductoService } from '../producto/producto.service';
 import { Compra } from './compra';
 import { CompraService } from './compra.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-compra',
@@ -36,7 +37,9 @@ export class CompraComponent implements OnInit {
       )    
   }
 
-  modificar(){}
+  modificar(){
+   
+  }
   show(){
     
   }
