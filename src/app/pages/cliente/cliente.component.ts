@@ -24,15 +24,8 @@ export class ClienteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach((rol) => {
-      if (rol === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-      if (rol === 'ROLE_TRABAJADOR') {
-        this.isAdmin = true;
-      }
-    });
+
+    this.isAdmin = this.tokenService.isAdmin();
     this.activatedRoute.paramMap.subscribe((params) => {
       let page: number = +params.get('page');
 

@@ -17,19 +17,14 @@ export class RegistroComponent implements OnInit {
   email: string;
   password: string;
   errMsj: string;
-  isLogged = false;
   errores: string[] = [];
 
   constructor(
-    private tokenService: TokenService,
     private authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-    }
   }
 
   onRegister(): void {

@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
+import { TipoProducto } from '../tipo/tipo-producto';
 import { Producto } from './producto';
+import { UnidadMedida } from './unidadMedida';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +22,10 @@ export class ProductoService {
       return true;
     }
     return false;
+  }
+
+  getProductoSinPagina(): Observable<any> {
+    return this.http.get(this.urlEndPoint);
   }
 
   getProducto(page: number): Observable<any> {
@@ -123,24 +129,30 @@ export class ProductoService {
       );
   }
 
-  // subirFoto(archivo: File, id):Observable<Producto> {
-  //   let formData = new FormData();
-  //   formData.append("archivo", archivo);
-  //   formData.append("id", id);
+  subirFoto(archivo: File, id): Observable<Producto> {
+    let formData = new FormData();
+    formData.append('archivo', archivo);
+    formData.append('id', id);
+    return this.http.post(`${this.urlEndPoint}/upload`, formData).pipe(
+      map((response: any) => response.producto as Producto),
+      catchError((e) => {
+        if (this.isNoAutorizado(e)) {
+          return throwError(() => e);
+        }
+        Swal.fire({
+          icon: 'error',
+          title: e.error.error,
+          text: e.error.mensaje,
+        });
+        return throwError(() => e);
+      })
+    );
+  }
 
-  //   return this.http.post(`${this.urlEndPoint}/upload/`, formData).pipe(
-  //     map((response:any) => response.producto as Producto),
-  //     catchError((e) => {
-  //       if (this.isNoAutorizado(e)) {
-  //         return throwError(() => e);
-  //       }
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: e.error.error,
-  //         text: e.error.mensaje,
-  //       });
-  //       return throwError(() => e);
-  //     })
-  //   );
-  // }
+  getTipoProducto(): Observable<TipoProducto[]> {
+    return this.http.get<TipoProducto[]>(this.urlEndPoint + '/tipo');
+  }
+  getUnidadMedida(): Observable<UnidadMedida[]> {
+    return this.http.get<UnidadMedida[]>(this.urlEndPoint + '/unidad');
+  }
 }

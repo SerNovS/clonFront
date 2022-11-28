@@ -8,21 +8,14 @@ import { TokenService } from 'src/app/pages/login/token.service';
 export class SidebarComponent implements OnInit {
 
 
-  roles: string[];
+  isLogged = false;
   isAdmin = false;
 
 
   constructor(private tokenService: TokenService) {}
 
   ngOnInit(): void {
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach((rol) => {
-      if (rol === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-      if (rol === 'ROLE_TRABAJADOR') {
-        this.isAdmin = true;
-      }
-    });
+    // this.isLogged = this.tokenService.isLogged();
+    this.isAdmin = this.tokenService.isAdmin();
   }
 }
