@@ -28,6 +28,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { SendEmailComponent } from './pages/login/change-password/send-email/send-email.component';
 import { CambiarPasswordComponent } from './pages/login/change-password/cambiar-password/cambiar-password.component';
 import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-foto.component';
+import { TrabajadoresComponent } from './pages/trabajadores/trabajadores.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-
     RegistroComponent,
     SendEmailComponent,
     CambiarPasswordComponent,
-    SubirFotoComponent
+    SubirFotoComponent,
+    TrabajadoresComponent
   ],
   imports: [
     BrowserModule,

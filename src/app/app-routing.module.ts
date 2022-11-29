@@ -16,6 +16,7 @@ import { SendEmailComponent } from './pages/login/change-password/send-email/sen
 import { CambiarPasswordComponent } from './pages/login/change-password/cambiar-password/cambiar-password.component';
 import { LoginGuard } from './guards/login.guard';
 import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-foto.component';
+import { TrabajadoresComponent } from './pages/trabajadores/trabajadores.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,11 +24,11 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
   {
     path: 'sendemail',
-    component: SendEmailComponent
+    component: SendEmailComponent,
   },
   {
     path: 'change-password/:tokenPassword',
-    component: CambiarPasswordComponent
+    component: CambiarPasswordComponent,
   },
   {
     path: 'producto/page/:page',
@@ -118,6 +119,12 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador', 'cliente'] },
+  },
+  {
+    path: 'trabajadores',
+    component: TrabajadoresComponent,
+    canActivate: [ProdGuardService],
+    data: { expectedRol: ['admin', 'trabajador'] },
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
