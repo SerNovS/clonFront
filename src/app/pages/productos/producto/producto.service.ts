@@ -155,8 +155,4 @@ export class ProductoService {
   getUnidadMedida(): Observable<UnidadMedida[]> {
     return this.http.get<UnidadMedida[]>(this.urlEndPoint + '/unidad');
   }
-
-  dameProducto(): Observable<Producto[]>{
-    return this.http.get<Producto[]>(this.urlEndPoint); 
-  }
 }
