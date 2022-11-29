@@ -1,2 +1,56 @@
 <app-header></app-header>
-<p>compra works!</p>
+
+
+<h2>Nuevo registro de compra</h2>
+<form #pc="ngForm" (ngSubmit)="agregarNuevoPrecioCompra(pc)">
+    <div style="display: flex" >
+        <div class="form-group name1 col-md-2">
+            <label for="Cantidad">Cantidad</label>
+            <input type="number" class="form-control" placeholder="120" [(ngModel)]="nuevaCompra.cantidad"
+                name="cantidad" #nombre="ngModel">
+        </div>
+        <div class="form-group name2 col-md-2">
+            <label for="Precio">Precio</label>
+            <input type="number" class="form-control" placeholder="120" [(ngModel)]="nuevaCompra.precio"
+             name="precio" #nombre="ngModel">
+        </div>
+        <div class="form-group name3 col-md-6">
+            <label for="Producto">Producto</label>
+            <div class="example-full-width">
+                <select (change)="guarda()" matNativeControl required name="producto" [(ngModel)]="nuevaCompra.producto"  #nombre="ngModel">
+                    <option value="-1" disabled>Productos:</option>
+                    <option *ngFor="let producto of productos" [ngValue]="producto">
+                        {{ producto.nombreProducto }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Agregar registro</button>
+        </div>
+    </div>
+</form>
+
+
+
+<h2> Registros de compra </h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id </th>
+            <th>Precio </th>
+            <th>Cantidad </th>
+            <th>FechaCompra </th>
+            <th>Producto </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let compra of preciosCompra.reverse()">
+            <td> {{ compra.id }} </td>
+            <td> {{ compra.precio }} </td>
+            <td> {{ compra.cantidad }} </td>
+            <td> {{ compra.fechaCompra | date:'short' }} </td>
+            <td> {{ compra.producto.nombreProducto }} </td>
+        </tr>
+    </tbody>
+</table>

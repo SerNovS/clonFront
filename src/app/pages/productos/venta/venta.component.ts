@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Producto } from '../producto/producto';
+import { ProductoService } from '../producto/producto.service';
+import { Venta } from './venta';
+
 
 @Component({
   selector: 'app-venta',
@@ -6,10 +10,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./venta.component.css']
 })
 export class VentaComponent implements OnInit {
+  productos: Producto[]=[];
+  venta: Venta[]=[];
+  productoElegido: Producto=new Producto();
+  constructor(private productoService: ProductoService) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.productoService.dameProducto().subscribe(data => {
+      this.productos=data;
+    });
+    
+  }
+
+  guarda(){
+    console.log(this.productoElegido);
+    console.log("Id del dropdown: "+this.productoElegido.id +" nombre: "+this.productoElegido.nombreProducto);
+
+    
   }
 
 }
