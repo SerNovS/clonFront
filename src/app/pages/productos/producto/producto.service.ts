@@ -159,4 +159,8 @@ export class ProductoService {
   dameProducto(): Observable<Producto[]>{
     return this.http.get<Producto[]>(this.urlEndPoint); 
   }
+
+  actualizaStock(id: number, stock: number): Observable<Producto>{
+    return this.http.get<Producto>(this.urlEndPoint+`/${id}`+`/${stock}`); 
+  }
 }
