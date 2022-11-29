@@ -30,9 +30,6 @@ export class ProductoService {
 
   getProducto(page: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
-      tap((response: any) => {
-        (response.content as Producto[]).forEach((producto) => {});
-      }),
       map((response: any) => {
         (response.content as Producto[]).map((producto) => {
           producto.nombreProducto =
@@ -41,9 +38,6 @@ export class ProductoService {
           return producto;
         });
         return response;
-      }),
-      tap((response: any) => {
-        (response.content as Producto[]).forEach((producto) => {});
       })
     );
   }
@@ -154,5 +148,13 @@ export class ProductoService {
   }
   getUnidadMedida(): Observable<UnidadMedida[]> {
     return this.http.get<UnidadMedida[]>(this.urlEndPoint + '/unidad');
+  }
+
+  getProductosByTipo(id:number): Observable<any>{
+    return this.http.get(`${this.urlEndPoint}/tipo/${id}`);
+  }
+
+  getProductoByTipoId(id: number): Observable<any> {
+    return this.http.get(this.urlEndPoint + '/tipo/' + id);
   }
 }

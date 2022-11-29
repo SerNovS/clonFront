@@ -30,7 +30,16 @@
           </div>
         </div>
 
-        <search-tipo></search-tipo>
+        <!-- <search-tipo></search-tipo> -->
+        <table class="table table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th *ngFor="let item of tipoProducto" scope="col"><button type="button" (click)="productoByTipoId(item.idTipoProducto)" class="btn btn-success">{{item.nombreTipo}}</button></th>
+            </tr>
+          </thead>
+
+        </table>
+
         <div class="card-body">
           <table id="example2" class="table table-bordered table-hover">
             <thead>
