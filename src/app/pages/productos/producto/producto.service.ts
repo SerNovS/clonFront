@@ -162,7 +162,31 @@ export class ProductoService {
     return this.http.get<Producto[]>(this.urlEndPoint); 
   }
 
-  actualizaStock(id: number, stock: number): Observable<Producto>{
-    return this.http.get<Producto>(this.urlEndPoint+`/${id}`+`/${stock}`); 
+  actualizaStock(producto: Producto): Observable<Producto>{
+    console.log(`Pasa acutlizacion`);
+    console.log(this.urlEndPoint+`stock/`);
+    console.log(`Producto pasado: `+ producto.nombreProducto+ `Stock: `+producto.stock + `Id: `+producto.id);
+    this.urlEndPoint=this.urlEndPoint+`stock/`;
+    console.log(this.urlEndPoint);
+    return this.http.put<Producto>(`${this.urlEndPoint}`,producto,{
+      headers: this.httpHeaders,
+    })
+    .pipe(
+      catchError((e) => {
+        if (this.isNoAutorizado(e)) {
+          return throwError(() => e);
+        }
+        if (e.status == 400) {
+          return throwError(() => e);
+        }
+        Swal.fire({
+          icon: 'error',
+          title: 'Algo ha salido mal',
+          text: e.error.mensaje,
+        });
+        return throwError(() => e);
+      })
+    );
   }
 }
+  
