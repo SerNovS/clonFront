@@ -157,4 +157,12 @@ export class ProductoService {
   getProductoByTipoId(id: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/tipo/' + id);
   }
+
+  dameProducto(): Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.urlEndPoint); 
+  }
+
+  actualizaStock(id: number, stock: number): Observable<Producto>{
+    return this.http.get<Producto>(this.urlEndPoint+`/${id}`+`/${stock}`); 
+  }
 }

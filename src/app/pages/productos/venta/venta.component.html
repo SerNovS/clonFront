@@ -1,2 +1,14 @@
 <app-header></app-header>
 <p>venta works!</p>
+<p>venta works!</p>
+<div class="col-9">
+  <div class="example-full-width">
+    <select (change)="guarda()" matNativeControl required name="managementId" 
+   [(ngModel)]="productoElegido">
+      <option value="-1" disabled>Productos:</option>
+      <option *ngFor="let producto of productos" [ngValue]="producto">
+        {{ producto.nombreProducto }}
+      </option>
+    </select>
+  </div>
+</div>
