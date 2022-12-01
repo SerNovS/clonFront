@@ -57,7 +57,7 @@ export class CompraComponent implements OnInit {
     this.rescata=this.nuevaCompra;
     console.log("Producto copia: "+this.rescata.producto.nombreProducto);
     this.nuevaCompra.producto.stock=this.nuevaCompra.cantidad;
-   
+
     this.productoService.actualizaStock(this.nuevaCompra.producto).subscribe((response:Producto) => {
       this.resultadoAcutalizaStock = response;  
 });
@@ -68,9 +68,7 @@ console.log("Flqg!");
   modificar(){
     
   }
-  show(){
-    
-  }
+  
 
 }
 // agregarNuevoPrecioCompra(pc){
