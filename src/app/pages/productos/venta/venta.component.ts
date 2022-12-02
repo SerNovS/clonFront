@@ -46,25 +46,14 @@ export class VentaComponent implements OnInit {
   }
 
   agregarNuevoPrecioVenta(pc) {
-    
     console.log(this.nuevaVenta.precio);
     if (
       this.nuevaVenta.precio > 0 &&
       this.nuevaVenta.producto != null &&
       this.nuevaVenta.precio <= 2147483640 &&
-      this.nuevaVenta.producto.ultimoPrecioCompra<this.nuevaVenta.precio
+      this.nuevaVenta.producto.ultimoPrecioCompra < this.nuevaVenta.precio
     ) {
-      // this.preciosVenta.forEach(element => {
-      //   console.log("Id: "+element.id+" Nombre: "+element.producto.nombreProducto+" Fecha: "+element.fechaVenta)
-      // });
-
-      // console.log("Nombre: "+ this.nuevaVenta.producto.nombreProducto +
-      // " Fecha: "+ this.nuevaVenta.fechaVenta);
-
-      // this.nuevaVenta.cantidad=0;
-      this.nuevaVenta.fechaVenta=new Date();
-      // console.log("Id: "+this.nuevaVenta.id+" Nombre: "+this.nuevaVenta.producto.nombreProducto+
-      // " Fecha: "+this.nuevaVenta.fechaVenta +" Stock: "+ this.nuevaVenta.producto.stock )
+      this.nuevaVenta.fechaVenta = new Date();
 
       this.ventaService
         .crearNuevoPrecioVenta(this.nuevaVenta)
@@ -72,37 +61,20 @@ export class VentaComponent implements OnInit {
           this.secreoControl = response;
         });
 
-        console.log("Paso agregar venta y asignar nuevo precio venta en propducto");
+      console.log(
+        'Paso agregar venta y asignar nuevo precio venta en propducto'
+      );
 
-      // // console.log("Rsultado creacion:")
-      // // console.log("Id: "+this.secreoControl.id+" Nombre: "+this.secreoControl.producto.nombreProducto+
-      // // " Fecha: "+this.secreoControl.fechaVenta +" Stock: "+ this.secreoControl.producto.stock )
-
-      // this.productoService
-      //   .actualizaStock(this.nuevaVenta.producto)
-      //   .subscribe((response: Producto) => {
-      //     this.resultadoAcutalizaStock = response;
-      //   });
-
-        console.log("Paso stock");
-
-      //   console.log("Id: "+this.secreoControl.id+" Nombre: "+this.secreoControl.producto.nombreProducto+
-      // " Fecha: "+this.secreoControl.fechaVenta +" Stock: "+ this.secreoControl.producto.stock );
-      // console.log("Id: "+this.resultadoAcutalizaStock.id+" Nombre: "+this.resultadoAcutalizaStock.nombreProducto+
-      // " Stock: "+ this.resultadoAcutalizaStock.stock );
-      console.log("Paso read");
-
-        if(this.secreoControl===null){
-          console.log("algo pasa pelao");
-        }
+      if (this.secreoControl === null) {
+        console.log('algo pasa pelao');
+      }
       this.showSuccessMessage(
         'Nuevo registro generado',
         `Se agregó un registro nuevo exitosamente`,
         'success',
         false
       );
-      //console.log('Stock actualizado: ' + this.resultadoAcutalizaStock.stock);
-      //window. location. reload();
+      window.location.reload();
     } else {
       this.errorMessage(
         'Error an generar nuevo registro',
@@ -111,7 +83,7 @@ export class VentaComponent implements OnInit {
         false
       );
     }
-    console.log("Paso todo?");
+    console.log('Paso todo?');
   }
 
   errorMessage(title, message, icon = null, showCancelButton = false) {
@@ -131,7 +103,7 @@ export class VentaComponent implements OnInit {
     });
   }
 
-  reload(){
-    this.nuevaVenta.precio
+  reload() {
+    this.nuevaVenta.precio;
   }
 }
