@@ -30,7 +30,6 @@ const routes: Routes = [
   },
   {
     path: 'producto/page/:page',component: ProductoComponent, canActivate: [ProdGuardService],
-    component: SendEmailComponent,
   },
   {
     path: 'change-password/:tokenPassword',
