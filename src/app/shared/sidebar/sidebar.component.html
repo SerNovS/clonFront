@@ -12,7 +12,7 @@
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <h3><a href="#" class="d-block">{{nombreUsuario}}</a></h3>
       </div>
     </div>
 
@@ -80,6 +80,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <!-- <li class="nav-item" *ngIf="!isAdmin || isLogged "> -->
+          <a class="nav-link" routerLink="/empleados">
+            <i class="fa fa-solid fa-users"></i>
+            <p>
+              Trabajadores
+            </p>
+          </a>
         <!-- <li class="nav-item">
             <a href="../widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

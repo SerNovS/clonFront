@@ -10,6 +10,7 @@ export class SidebarComponent implements OnInit {
 
   isLogged = false;
   isAdmin = false;
+  nombreUsuario: string;
 
 
   constructor(private tokenService: TokenService) {}
@@ -17,5 +18,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     // this.isLogged = this.tokenService.isLogged();
     this.isAdmin = this.tokenService.isAdmin();
+    this.nombreUsuario = this.tokenService.getUserName();
   }
 }
