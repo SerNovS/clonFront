@@ -15,7 +15,7 @@ export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
   tipoProducto: TipoProducto[];
   paginador: any;
-  mostado:boolean;
+  mostado: boolean;
   filters = {
     keyword: '',
   };
@@ -90,7 +90,7 @@ export class ProductoComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.productoService.update(producto).subscribe((response) => {
-          producto.visibilidad =true;
+          producto.visibilidad = true;
           Swal.fire(
             'Activado!',
             `Se ha activado el producto ${producto.nombreProducto}`,
@@ -135,6 +135,12 @@ export class ProductoComponent implements OnInit {
       return e.nombreProducto
         .toLowerCase()
         .includes(this.filters.keyword.toLowerCase());
+    });
+  }
+
+  productoByTipoId(id: number) {
+    this.productoService.getProductoByTipoId(id).subscribe((data) => {
+      this.productos = data as Producto[];
     });
   }
 }

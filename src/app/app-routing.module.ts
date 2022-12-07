@@ -16,6 +16,7 @@ import { SendEmailComponent } from './pages/login/change-password/send-email/sen
 import { CambiarPasswordComponent } from './pages/login/change-password/cambiar-password/cambiar-password.component';
 import { LoginGuard } from './guards/login.guard';
 import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-foto.component';
+import { EmpleadosComponent } from './pages/empleados/empleados.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,10 +25,16 @@ const routes: Routes = [
   {
     path: 'sendemail',
     component: SendEmailComponent
+  },{
+    path: 'change-password/:tokenPassword', component: CambiarPasswordComponent
+  },
+  {
+    path: 'producto/page/:page',component: ProductoComponent, canActivate: [ProdGuardService],
+    component: SendEmailComponent,
   },
   {
     path: 'change-password/:tokenPassword',
-    component: CambiarPasswordComponent
+    component: CambiarPasswordComponent,
   },
   {
     path: 'producto/page/:page',
@@ -36,33 +43,19 @@ const routes: Routes = [
     data: { expectedRol: ['admin', 'trabajador', 'cliente'] },
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [ProdGuardService],
+    path: 'dashboard', component: DashboardComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador', 'cliente'] },
   },
   {
-    path: 'productos',
-    component: ProductoComponent,
-    canActivate: [ProdGuardService],
+    path: 'productos',component: ProductoComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador', 'cliente'] },
   },
   {
-    path: 'producto/form',
-    component: FormComponent,
-    canActivate: [ProdGuardService],
+    path: 'producto/form', component: FormComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'producto/form/:id',
-    component: FormComponent,
-    canActivate: [ProdGuardService],
-    data: { expectedRol: ['admin', 'trabajador'] },
-  },
-  {
-    path: 'producto/upload/:id',
-    component: SubirFotoComponent,
-    canActivate: [ProdGuardService],
+    path: 'producto/form/:id', component: FormComponent,canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
@@ -72,52 +65,42 @@ const routes: Routes = [
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'compraproducto',
-    component: CompraComponent,
-    canActivate: [ProdGuardService],
+    path: 'compraproducto', component: CompraComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'tipoproducto',
-    component: TipoComponent,
-    canActivate: [ProdGuardService],
+    path: 'tipoproducto', component: TipoComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'ventaproducto',
-    component: VentaComponent,
-    canActivate: [ProdGuardService],
+    path: 'ventaproducto', component: VentaComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'cliente',
-    component: ClienteComponent,
-    canActivate: [ProdGuardService],
+    path: 'cliente', component: ClienteComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'cliente/page/:page',
-    component: ClienteComponent,
-    canActivate: [ProdGuardService],
+    path: 'cliente/page/:page', component: ClienteComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'cliente/form',
-    component: FormClienteComponent,
-    canActivate: [ProdGuardService],
+    path: 'cliente/form', component: FormClienteComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'cliente/form/:id',
-    component: FormClienteComponent,
-    canActivate: [ProdGuardService],
+    path: 'cliente/form/:id', component: FormClienteComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador'] },
   },
   {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [ProdGuardService],
+    path: 'home', component: HomeComponent, canActivate: [ProdGuardService],
     data: { expectedRol: ['admin', 'trabajador', 'cliente'] },
+  },
+  {
+    path: 'empleados',
+    component: EmpleadosComponent,
+    canActivate: [ProdGuardService],
+    data: { expectedRol: ['admin', 'trabajador'] },
   },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
