@@ -5,10 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TipoProducto } from '../../tipo/tipo-producto';
 import { UnidadMedida } from '../unidadMedida';
-import { VentaService } from '../../venta/venta.service';
-import { CompraService } from '../../compra/compra.service';
-import { Venta } from '../../venta/venta';
-import { Compra } from '../../compra/compra';
 
 @Component({
   selector: 'app-form',
@@ -23,15 +19,10 @@ export class FormComponent implements OnInit {
 
   public errores: string[] = [];
 
-  venta:Venta;
-  compra:Compra;
-
   constructor(
     private productoService: ProductoService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private ventaService: VentaService,
-    private compraService: CompraService
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +59,6 @@ export class FormComponent implements OnInit {
         console.log(err.error.errors);
       }
     );
-      this.crearCompraVenta();
   }
 
   cargarProducto(): void {
@@ -114,21 +104,4 @@ export class FormComponent implements OnInit {
     }
     return o1===null || o2===null || o1===undefined || o2===undefined ? false: o1.idUnidadMedida === o2.idUnidadMedida;
   }
-
-  crearCompraVenta(){
-    
-    this.venta.cantidad=0;
-    this.venta.fechaVenta=new Date;
-    this.venta.precio=this.producto.ultimoPrecioVenta;
-    this.venta.producto=this.producto;
-    this.ventaService.crearNuevoPrecioVenta(this.venta);
-
-    
-    this.compra.cantidad=this.producto.stock;
-    this.compra.fechaCompra=new Date;
-    this.compra.precio=this.producto.ultimoPrecioCompra;
-    this.compra.producto=this.producto;
-    this.compraService.crearNuevoPrecioCompra(this.compra);
-  }
-  }
- 
+}
