@@ -28,7 +28,8 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { SendEmailComponent } from './pages/login/change-password/send-email/send-email.component';
 import { CambiarPasswordComponent } from './pages/login/change-password/cambiar-password/cambiar-password.component';
 import { SubirFotoComponent } from './pages/productos/producto/subir-foto/subir-foto.component';
-import { TrabajadoresComponent } from './pages/trabajadores/trabajadores.component';
+import { EmpleadosComponent } from './pages/empleados/empleados.component';
+
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { TrabajadoresComponent } from './pages/trabajadores/trabajadores.compone
     SendEmailComponent,
     CambiarPasswordComponent,
     SubirFotoComponent,
-    TrabajadoresComponent
+    EmpleadosComponent
   ],
   imports: [
     BrowserModule,
